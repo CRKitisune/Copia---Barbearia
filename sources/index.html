@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Barbearia Nativa - Cortes Clássicos e Modernos. Mais de 15 anos de tradição em cuidados masculinos.">
+    <title>Barbearia Nativa - Cortes Clássicos e Modernos</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #d4af37;
+            --accent: #c9a227;
+            --light: #f8f9fa;
+            --dark: #121212;
+            --gray: #6c757d;
+            --text: #333;
+            --text-light: #fff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --success: #28a745;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Moderno */
+        header {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+        
+        .admin-access {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--primary);
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            left: 0;
+        }
+        
+        .btn:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+        
+        .btn-outline:hover {
+            background: var(--text-light);
+            color: var(--primary);
+        }
+        
+        .btn-outline[style*="background: #25D366"]:hover {
+            background: #128C7E !important;
+            border-color: #128C7E !important;
+            color: white !important;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 24px;
+        }
+        
+        /* Hero Section Redesign */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), transparent);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeUp 1s ease-out;
+        }
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+        
+        /* Services Section Redesign */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-img {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+        
+        .service-overlay .btn {
+            padding: 8px 20px;
+            font-size: 0.8rem;
+        }
+        
+        .service-info {
+            padding: 25px;
+        }
+        
+        .service-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .service-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .duration {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: normal;
+        }
+        
+        /* About Section Redesign */
+        .about {
+            padding: 100px 0;
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .about-img::before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            border: 5px solid var(--secondary);
+            top: -20px;
+            left: -20px;
+            z-index: 1;
+        }
+        
+        .about-img img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-text h3::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: #ccc;
+            font-size: 1rem;
+        }
+        
+        .stats {
+            display: flex;
+            margin-top: 30px;
+            gap: 30px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: block;
+        }
+        
+        .stat-text {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Gallery Section Redesign */
+        .gallery {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            height: 250px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay i {
+            color: var(--text-light);
+            font-size: 2rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+        
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-slide {
+            text-align: center;
+            padding: 0 20px;
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .testimonial-slide.active {
+            display: block;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--secondary);
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text::before {
+            top: -20px;
+            left: -30px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -30px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary);
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .testimonial-dot.active {
+            background: var(--secondary);
+            transform: scale(1.2);
+        }
+        
+        /* Contact Section Redesign */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3, .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .contact-info h3::after, .contact-form h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .contact-info p {
+            margin-bottom: 20px;
+            color: var(--gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .contact-info i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer Redesign */
+        footer {
+            background-color: var(--dark);
+            color: var(--text-light);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
+        }
+        
+        .footer-about p {
+            color: #aaa;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        .footer-links i {
+            font-size: 0.8rem;
+            color: var(--secondary);
+        }
+        
+        .footer-contact p {
+            color: #aaa;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .footer-contact i {
+            color: var(--secondary);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Modal de Agendamento */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .booking-modal {
+            background: white;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.8);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .modal-overlay.active .booking-modal {
+            transform: scale(1);
+        }
+        
+        .modal-header {
+            padding: 25px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            color: var(--text-light);
+            font-size: 1.5rem;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            color: var(--secondary);
+            transform: rotate(90deg);
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        
+        .service-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .service-option {
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .service-option:hover {
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .service-option.selected {
+            border-color: var(--secondary);
+            background: #fef9e7;
+        }
+        
+        .service-name {
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .service-price {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+        
+        .btn-cancel {
+            background: transparent;
+            color: var(--gray);
+            border: 2px solid var(--gray);
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-cancel:hover {
+            background: var(--gray);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+        
+        .success-message {
+            text-align: center;
+            padding: 40px 20px;
+            display: none;
+        }
+        
+        .success-message i {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .success-message h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .success-message p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+        
+        .error-message {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* Modal de Confirmação Personalizado */
+        .custom-modal {
+            background: white;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 90%;
+            transform: scale(0.8);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .modal-overlay.active .custom-modal {
+            transform: scale(1);
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        /* Loading Spinner */
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--secondary);
+            border-radius: 50%;
+            animation: spin 10s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .admin-access {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+            }
+            
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-img::before {
+                display: none;
+            }
+            
+            .stats {
+                justify-content: center;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .btn, .btn-cancel {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo"><i class="fas fa-cut"></i>Barbearia Nativa</div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Início</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                
+                <div class="admin-access">
+                    <a href="colaborador.html" class="btn btn-outline">
+                        <i class="fas fa-user-shield"></i> Área Admin
+                    </a>
+                    </a>
+                </div>
+                
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Estilo e Tradição em Cada Corte</h1>
+                <p>Na Barbearia Nativa, combinamos técnicas clássicas com tendências modernas para oferecer a melhor experiência em cuidados masculinos.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#services" class="btn">Nossos Serviços</a>
+                    <button class="btn btn-outline" id="open-booking-hero">Agendar Horário</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Serviços -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Oferecemos uma variedade de serviços para cuidar do seu visual com qualidade e excelência</p>
+            </div>
+            <div class="services-grid" id="services-container">
+                <!-- Os serviços serão carregados dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Agendamento CORRIGIDO -->
+    <div class="modal-overlay" id="booking-modal">
+        <div class="booking-modal">
+            <div class="modal-header">
+                <h3>Agendar Horário</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="service">Serviço *</label>
+                        <div class="service-options" id="service-options">
+                            <!-- As opções de serviço serão carregadas dinamicamente -->
+                        </div>
+                        <small class="error-message" id="service-error">Selecione um serviço</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">Nome Completo *</label>
+                        <input type="text" id="name" required placeholder="Seu nome completo">
+                        <small class="error-message" id="name-error">Nome é obrigatório</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone *</label>
+                        <input type="text" id="phone" required placeholder="11999999999" pattern="[0-9]*" inputmode="numeric" maxlength="11">
+                        <small class="error-message" id="phone-error">Telefone válido é obrigatório</small>
+                        <small style="color: #e74c3c; font-size: 12px;">⚠️ Apenas números! DDD + número</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="barbeiro">Barbeiro *</label>
+                        <select id="barbeiro" required>
+                            <option value="">Selecione um barbeiro...</option>
+                            <option value="Messias">Messias</option>
+                            <option value="João">João</option>
+                            <option value="Carlos">Carlos</option>
+                            <option value="Qualquer">Qualquer</option>
+                        </select>
+                        <small class="error-message" id="barbeiro-error">Selecione um barbeiro</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="date">Data *</label>
+                        <input type="date" id="date" required>
+                        <small class="error-message" id="date-error">Selecione uma data</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time">Horário *</label>
+                        <select id="time" required>
+                            <option value="">Selecione um horário</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                        <small class="error-message" id="time-error">Selecione um horário</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Observações</label>
+                        <textarea id="notes" placeholder="Alguma observação especial?"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel modal-close">Cancelar</button>
+                        <button type="submit" class="btn" id="submit-booking">Confirmar Agendamento</button>
+                    </div>
+                </form>
+                
+                <div class="loading-spinner" id="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Processando seu agendamento...</p>
+                </div>
+                
+                <div class="success-message" id="success-message">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Agendamento Confirmado!</h3>
+                    <p>Seu horário foi agendado com sucesso. Entraremos em contato para confirmar.</p>
+                    <button class="btn modal-close">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação Personalizado -->
+    <div class="modal-overlay" id="confirm-modal">
+        <div class="custom-modal">
+            <div class="modal-header">
+                <h3 id="confirm-modal-title">Confirmação</h3>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-modal-message">Tem certeza que deseja realizar esta ação?</p>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" id="confirm-cancel">Cancelar</button>
+                    <button class="btn" id="confirm-ok">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção Sobre -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Barbearia Nativa">
+                </div>
+                <div class="about-text">
+                    <h3>Mais de 15 anos de tradição</h3>
+                    <p>A Barbearia Nativa foi fundada em 2008 com o objetivo de resgatar os verdadeiros valores das barbearias clássicas, combinando-os com as técnicas e tendências contemporâneas.</p>
+                    <p>Nossa equipe é formada por profissionais altamente qualificados, constantemente atualizados com as últimas tendências do mercado de beleza masculina.</p>
+                    <p>Valorizamos o atendimento personalizado, onde cada cliente é único e recebe um tratamento exclusivo de acordo com suas necessidades e preferências.</p>
+                    
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-text">Anos de Experiência</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">5K+</span>
+                            <span class="stat-text">Clientes Satisfeitos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-text">Prêmios Conquistados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Galeria -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Trabalhos</h2>
+                <p>Confira alguns dos nossos cortes e transformações</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Galeria 1">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1599351430140-c70f0250bd70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Galeria 2">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.cabeloafro.com.br/wp-content/uploads/2020/01/Cabelo-masculino-1-5047930-1975280.jpg" alt="Galeria 3">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://assets.unileversolutions.com/v1/137829713.jpg" alt="Galeria 4">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Depoimentos -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: var(--text-light);">O Que Nossos Clientes Dizem</h2>
+                <p style="color: #ccc;">Depoimentos de quem já experimentou nossos serviços</p>
+            </div>
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-text">
+                            Excelente atendimento! O Rodrigo é um profissional incrível, sempre muito atencioso e com um trabalho impecável. Minha barba nunca esteve tão bem cuidada.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente">
+                            </div>
+                            <div class="author-info">
+                                <h4>Carlos Silva</h4>
+                                <p>Cliente há 3 anos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-text">
+                            Ambiente aconchegante, profissionais qualificados e um resultado sempre acima das expectativas. Recomendo a todos que buscam qualidade e bom gosto.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Cliente">
+                            </div>
+                            <div class="author-info">
+                                <h4>André Santos</h4>
+                                <p>Cliente há 2 anos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-text">
+                            A Barbearia Nativa transformou minha autoestima. Sempre saio de lá renovado e com a sensação de ter feito mais do que apenas um corte de cabelo.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img">
+                                <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Cliente">
+                            </div>
+                            <div class="author-info">
+                                <h4>Roberto Almeida</h4>
+                                <p>Cliente há 5 anos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active"></div>
+                    <div class="testimonial-dot"></div>
+                    <div class="testimonial-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Estamos à disposição para atender você da melhor forma possível</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua da Tradição, 123 - Centro, Cidade/SP</p>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@barbearianativa.com.br</p>
+                    <p><i class="fas fa-clock"></i> Segunda a Sexta: 9h às 19h<br>Sábado: 9h às 17h<br>Domingo: Fechado</p>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Envie uma Mensagem</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Seu Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Seu E-mail" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Seu Telefone">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Sua Mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo"><i class="fas fa-cut"></i>Barbearia Nativa</div>
+                    <p>Há mais de 15 anos oferecendo os melhores serviços de barbearia, combinando tradição e modernidade para valorizar sua autoestima.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="whatsapp-admin"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Início</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Serviços</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> Sobre Nós</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Galeria</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua da Tradição, 123 - Centro, Cidade/SP</p>
+                    <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                    <p><i class="fas fa-envelope"></i> contato@barbearianativa.com.br</p>
+                    <p><i class="fas fa-clock"></i> Seg-Sex: 9h-19h<br>Sáb: 9h-17h</p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Barbearia Nativa. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== CONFIGURAÇÃO UNIFICADA DO SISTEMA =====
+        const STORAGE_KEYS = {
+            SERVICES: 'barbearia_services',
+            APPOINTMENTS: 'barbearia_appointments',
+            EMPLOYEES: 'barbearia_employees',
+            REVIEWS: 'barbearia_reviews'
+        };
+
+        // Dados padrão dos serviços
+        const defaultServices = [
+            {
+                id: 1,
+                name: "Corte de Cabelo",
+                description: "Corte profissional com técnicas tradicionais e modernas, utilizando os melhores produtos do mercado.",
+                price: 50,
+                duration: 30,
+                status: "Ativo"
+            },
+            {
+                id: 2,
+                name: "Barba Completa",
+                description: "Modelagem e acabamento perfeito para sua barba, com toalha quente e produtos premium.",
+                price: 40,
+                duration: 20,
+                status: "Ativo"
+            },
+            {
+                id: 3,
+                name: "Pacote Completo",
+                description: "Corte de cabelo + barba + tratamento capilar. A experiência completa de cuidados masculinos.",
+                price: 80,
+                duration: 60,
+                status: "Ativo"
+            }
+        ];
+
+        // Funções de armazenamento unificadas
+        // Funções de API para substituir localStorage
+        async function fetchFromAPI(endpoint) {
+            try {
+                const response = await fetch(`/api/frontend/${endpoint}`);
+                const result = await response.json();
+                
+                if (result.success) {
+                    console.log(`✅ Dados carregados da API ${endpoint}:`, result.data);
+                    return result.data;
+                } else {
+                    console.error(`❌ Erro na API ${endpoint}:`, result.error);
+                    return [];
+                }
+            } catch (error) {
+                console.error(`❌ Erro ao conectar com API ${endpoint}:`, error);
+                // Fallback para localStorage se a API falhar
+                return loadFromStorage(endpoint, []);
+            }
+        }
+
+        async function saveToAPI(endpoint, data) {
+            try {
+                const response = await fetch(`/api/frontend/${endpoint}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    console.log(`✅ Dados salvos via API ${endpoint}:`, result.data);
+                    return result.data;
+                } else {
+                    console.error(`❌ Erro ao salvar via API ${endpoint}:`, result.error);
+                    return null;
+                }
+            } catch (error) {
+                console.error(`❌ Erro ao conectar com API ${endpoint}:`, error);
+                return null;
+            }
+        }
+
+        // Funções de armazenamento unificadas (fallback para localStorage)
+        function saveToStorage(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify(data));
+                console.log(`✅ Dados salvos em ${key} (localStorage):`, data);
+                return true;
+            } catch (error) {
+                console.error(`❌ Erro ao salvar em ${key}:`, error);
+                return false;
+            }
+        }
+
+        function loadFromStorage(key, defaultValue = []) {
+            try {
+                const data = localStorage.getItem(key);
+                if (!data) {
+                    // Se não há dados, salva os dados padrão
+                    if (key === STORAGE_KEYS.SERVICES) {
+                        saveToStorage(key, defaultValue);
+                    }
+                    return defaultValue;
+                }
+                return JSON.parse(data);
+            } catch (error) {
+                console.error(`❌ Erro ao carregar de ${key}:`, error);
+                return defaultValue;
+            }
+        }
+        
+        // Elementos DOM
+        const servicesContainer = document.getElementById('services-container');
+        const serviceOptions = document.getElementById('service-options');
+        const bookingModal = document.getElementById('booking-modal');
+        const openBookingHero = document.getElementById('open-booking-hero');
+        const closeModalButtons = document.querySelectorAll('.modal-close');
+        const submitBooking = document.getElementById('submit-booking');
+        const bookingForm = document.getElementById('booking-form');
+        const successMessage = document.getElementById('success-message');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        const confirmModal = document.getElementById('confirm-modal');
+        const confirmModalTitle = document.getElementById('confirm-modal-title');
+        const confirmModalMessage = document.getElementById('confirm-modal-message');
+        const confirmCancelBtn = document.getElementById('confirm-cancel');
+        const confirmOkBtn = document.getElementById('confirm-ok');
+
+        // Dados dos serviços
+        let siteServicesData = [];
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeServices();
+            setupEventListeners();
+            initializePage();
+        });
+
+        // Inicializar serviços
+        async function initializeServices() {
+            try {
+                // Carregar serviços da API
+                const apiServices = await fetchFromAPI('services');
+                if (apiServices && apiServices.length > 0) {
+                    siteServicesData = apiServices;
+                } else {
+                    // Fallback para dados padrão se API falhar
+                    siteServicesData = defaultServices;
+                }
+                renderServices();
+                renderServiceOptions();
+            } catch (error) {
+                console.error('❌ Erro ao inicializar serviços:', error);
+                // Fallback para localStorage
+                siteServicesData = loadFromStorage(STORAGE_KEYS.SERVICES, defaultServices);
+                renderServices();
+                renderServiceOptions();
+            }
+        }
+
+        // Configurar event listeners
+        function setupEventListeners() {
+            // Menu Mobile
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Fechar menu ao clicar em um link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Scroll suave para links internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Testimonials slider
+            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+            const testimonialDots = document.querySelectorAll('.testimonial-dot');
+            let currentTestimonial = 0;
+            
+            function showTestimonial(index) {
+                testimonialSlides.forEach(slide => slide.classList.remove('active'));
+                testimonialDots.forEach(dot => dot.classList.remove('active'));
+                
+                testimonialSlides[index].classList.add('active');
+                testimonialDots[index].classList.add('active');
+                currentTestimonial = index;
+            }
+            
+            testimonialDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showTestimonial(index);
+                });
+            });
+            
+            // Auto-rotate testimonials
+            setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % testimonialSlides.length;
+                showTestimonial(currentTestimonial);
+            }, 5000);
+            
+            // Form submission
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    showConfirmModal('Sucesso', 'Mensagem enviada com sucesso! Entraremos em contato em breve.', 'success');
+                    contactForm.reset();
+                });
+            }
+
+            // Sistema de Agendamento
+            openBookingHero.addEventListener('click', () => openBookingModal());
+            
+            closeModalButtons.forEach(button => {
+                button.addEventListener('click', closeBookingModal);
+            });
+
+            // Fechar modal ao clicar no overlay
+            bookingModal.addEventListener('click', (e) => {
+                if (e.target === bookingModal) {
+                    closeBookingModal();
+                }
+            });
+
+            // Selecionar serviço
+            serviceOptions.addEventListener('click', (e) => {
+                if (e.target.closest('.service-option')) {
+                    const option = e.target.closest('.service-option');
+                    document.querySelectorAll('.service-option').forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                    hideError('service-error');
+                }
+            });
+
+            // Configurar data mínima para hoje
+            const dateInput = document.getElementById('date');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+
+            // Submeter agendamento
+            bookingForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                submitBookingForm();
+            });
+
+            // Modal de confirmação
+            confirmCancelBtn.addEventListener('click', closeConfirmModal);
+            confirmOkBtn.addEventListener('click', handleConfirmAction);
+
+            // Fechar modal com ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (bookingModal.classList.contains('active')) {
+                        closeBookingModal();
+                    }
+                    if (confirmModal.classList.contains('active')) {
+                        closeConfirmModal();
+                    }
+                }
+            });
+
+            // Validação em tempo real
+            document.getElementById('name').addEventListener('blur', validateName);
+            document.getElementById('phone').addEventListener('blur', validatePhone);
+            document.getElementById('barbeiro').addEventListener('change', validateBarbeiro);
+            document.getElementById('date').addEventListener('change', validateDate);
+            document.getElementById('time').addEventListener('change', validateTime);
+
+            // Filtrar apenas números no input do telefone
+            document.getElementById('phone').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 11) {
+                    value = value.substring(0, 11);
+                }
+                e.target.value = value;
+            });
+
+            // Prevenir colar caracteres não numéricos
+            document.getElementById('phone').addEventListener('paste', function(e) {
+                e.preventDefault();
+                let paste = (e.clipboardData || window.clipboardData).getData('text');
+                let numbersOnly = paste.replace(/\D/g, '');
+                if (numbersOnly.length > 11) {
+                    numbersOnly = numbersOnly.substring(0, 11);
+                }
+                e.target.value = numbersOnly;
+            });
+        }
+
+        // Inicializar página
+        function initializePage() {
+            // Verificar se há parâmetros na URL para abrir modal diretamente
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceParam = urlParams.get('service');
+            
+            if (serviceParam) {
+                setTimeout(() => {
+                    openBookingModal(serviceParam);
+                }, 1000);
+            }
+        }
+
+        // Renderizar serviços na página
+        function renderServices() {
+            servicesContainer.innerHTML = '';
+            
+            const activeServices = siteServicesData.filter(service => service.status === 'Ativo');
+            
+            if (activeServices.length === 0) {
+                servicesContainer.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-cut" style="font-size: 3rem; color: var(--gray); margin-bottom: 15px;"></i>
+                        <h3>Nenhum serviço disponível no momento</h3>
+                        <p>Entre em contato para mais informações.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            activeServices.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.innerHTML = `
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1520338661084-680395057c93?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="${service.name}">
+                        <div class="service-overlay">
+                            <button class="btn open-booking" data-service="${service.name}">Agendar</button>
+                        </div>
+                    </div>
+                    <div class="service-info">
+                        <h3>${service.name}</h3>
+                        <p>${service.description}</p>
+                        <div class="price">
+                            R$ ${service.price.toFixed(2)}
+                            <span class="duration">${service.duration} min</span>
+                        </div>
+                    </div>
+                `;
+                
+                servicesContainer.appendChild(serviceCard);
+            });
+
+            // Adicionar event listeners aos botões de agendamento
+            document.querySelectorAll('.open-booking').forEach(button => {
+                button.addEventListener('click', () => {
+                    const service = button.getAttribute('data-service');
+                    openBookingModal(service);
+                });
+            });
+        }
+
+        // Renderizar opções de serviço no modal
+        function renderServiceOptions() {
+            serviceOptions.innerHTML = '';
+            
+            const activeServices = siteServicesData.filter(service => service.status === 'Ativo');
+            
+            activeServices.forEach(service => {
+                const option = document.createElement('div');
+                option.className = 'service-option';
+                option.setAttribute('data-service-id', service.id);
+                option.setAttribute('data-service', service.name);
+                option.setAttribute('data-price', service.price);
+                option.setAttribute('data-duration', service.duration);
+                option.innerHTML = `
+                    <span class="service-name">${service.name}</span>
+                    <span class="service-price">R$ ${service.price.toFixed(2)}</span>
+                `;
+                serviceOptions.appendChild(option);
+            });
+        }
+
+        // Abrir modal de agendamento
+        function openBookingModal(service = null) {
+            bookingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Resetar formulário
+            bookingForm.style.display = 'block';
+            successMessage.style.display = 'none';
+            loadingSpinner.style.display = 'none';
+            bookingForm.reset();
+            hideAllErrors();
+            
+            // Selecionar serviço se especificado
+            if (service) {
+                document.querySelectorAll('.service-option').forEach(option => {
+                    if (option.dataset.service === service) {
+                        option.classList.add('selected');
+                    }
+                });
+            } else {
+                document.querySelectorAll('.service-option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+            }
+        }
+
+        // Fechar modal de agendamento
+        function closeBookingModal() {
+            bookingModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Submeter formulário de agendamento
+        async function submitBookingForm() {
+            // Validar todos os campos
+            const isServiceValid = validateService();
+            const isNameValid = validateName();
+            const isPhoneValid = validatePhone();
+            const isBarbeiroValid = validateBarbeiro();
+            const isDateValid = validateDate();
+            const isTimeValid = validateTime();
+            
+            if (!isServiceValid || !isNameValid || !isPhoneValid || !isBarbeiroValid || !isDateValid || !isTimeValid) {
+                showConfirmModal('Erro', 'Por favor, preencha todos os campos obrigatórios corretamente.', 'error');
+                return;
+            }
+
+            // Mostrar loading
+            bookingForm.style.display = 'none';
+            loadingSpinner.style.display = 'block';
+            
+            // Criar objeto de agendamento
+            const selectedService = document.querySelector('.service-option.selected');
+            const appointment = {
+                id: Date.now(), // ID único baseado no timestamp
+                customerName: document.getElementById('name').value.trim(),
+                customerPhone: document.getElementById('phone').value.trim(),
+                serviceId: selectedService.dataset.serviceId || 1,
+                serviceName: selectedService.dataset.service,
+                servicePrice: parseFloat(selectedService.dataset.price),
+                employeeId: document.getElementById('barbeiro').value === 'joao' ? 1 : 2,
+                employeeName: document.getElementById('barbeiro').value === 'joao' ? 'João' : 'Messias',
+                date: document.getElementById('date').value,
+                time: document.getElementById('time').value,
+                duration: parseInt(selectedService.dataset.duration),
+                notes: document.getElementById('notes').value.trim(),
+                paymentMethod: 'Dinheiro', // Default
+                status: 'pending', // Status inicial como pendente
+                createdAt: new Date().toISOString()
+            };
+            
+            // Salvar agendamento
+            try {
+                const success = await saveAppointment(appointment);
+                
+                loadingSpinner.style.display = 'none';
+                
+                if (success) {
+                    successMessage.style.display = 'block';
+                    // Enviar notificação (simulado)
+                    sendConfirmationEmail(appointment.customerName, appointment.date, appointment.time, appointment.serviceName);
+                } else {
+                    bookingForm.style.display = 'block';
+                    showConfirmModal('Erro', 'Erro ao salvar agendamento. Tente novamente.', 'error');
+                }
+            } catch (error) {
+                console.error('❌ Erro ao processar agendamento:', error);
+                loadingSpinner.style.display = 'none';
+                bookingForm.style.display = 'block';
+                showConfirmModal('Erro', 'Erro ao salvar agendamento. Tente novamente.', 'error');
+            }
+        }
+
+        // Função para salvar agendamento
+        async function saveAppointment(appointment) {
+            try {
+                // Converter formato do frontend para formato da API
+                const apiAppointment = {
+                    cliente_nome: appointment.customerName,
+                    cliente_telefone: appointment.customerPhone,
+                    servico_id: appointment.serviceId,
+                    servico_nome: appointment.serviceName,
+                    servico_preco: appointment.servicePrice,
+                    colaborador_id: appointment.employeeId,
+                    colaborador_nome: appointment.employeeName,
+                    data_agendamento: appointment.date,
+                    horario: appointment.time,
+                    duracao_estimada: appointment.duration,
+                    forma_pagamento: appointment.paymentMethod || 'Dinheiro',
+                    observacoes: appointment.notes || ''
+                };
+
+                // Salvar via API
+                const savedAppointment = await saveToAPI('appointments', apiAppointment);
+                
+                if (savedAppointment) {
+                    console.log('✅ Agendamento salvo com sucesso via API:', savedAppointment);
+                    
+                    // Também salvar no localStorage como backup
+                    let appointments = loadFromStorage(STORAGE_KEYS.APPOINTMENTS, []);
+                    appointments.push(appointment);
+                    saveToStorage(STORAGE_KEYS.APPOINTMENTS, appointments);
+                    
+                    return true;
+                } else {
+                    console.error('❌ Erro ao salvar agendamento via API, tentando localStorage');
+                    
+                    // Fallback para localStorage
+                    let appointments = loadFromStorage(STORAGE_KEYS.APPOINTMENTS, []);
+                    
+                    // Verificar se já existe um agendamento no mesmo horário
+                    const conflictingAppointment = appointments.find(apt => 
+                        apt.date === appointment.date && 
+                        apt.time === appointment.time &&
+                        apt.status === 'pending'
+                    );
+                    
+                    if (conflictingAppointment) {
+                        showConfirmModal('Erro', 'Já existe um agendamento para este horário. Por favor, escolha outro horário.', 'error');
+                        return false;
+                    }
+                    
+                    // Adicionar novo agendamento
+                    appointments.push(appointment);
+                    
+                    // Salvar no localStorage
+                    const success = saveToStorage(STORAGE_KEYS.APPOINTMENTS, appointments);
+                    
+                    if (success) {
+                        console.log('✅ Agendamento salvo no localStorage:', appointment);
+                        return true;
+                    } else {
+                        console.error('❌ Erro ao salvar agendamento no localStorage');
+                        return false;
+                    }
+                }
+            } catch (error) {
+                console.error('❌ Erro ao salvar agendamento:', error);
+                return false;
+            }
+        }
+
+        // Funções de validação
+        function validateService() {
+            const selectedService = document.querySelector('.service-option.selected');
+            if (!selectedService) {
+                showError('service-error', 'Selecione um serviço');
+                return false;
+            }
+            hideError('service-error');
+            return true;
+        }
+
+        function validateName() {
+            const name = document.getElementById('name').value.trim();
+            if (!name) {
+                showError('name-error', 'Nome é obrigatório');
+                return false;
+            }
+            hideError('name-error');
+            return true;
+        }
+
+        function validatePhone() {
+            const phone = document.getElementById('phone').value.trim();
+            const phoneRegex = /^\d{10,11}$/; // Apenas números, 10 ou 11 dígitos
+            
+            if (!phone) {
+                showError('phone-error', 'Telefone é obrigatório');
+                return false;
+            }
+            
+            if (!phoneRegex.test(phone)) {
+                showError('phone-error', 'Telefone deve ter 10 ou 11 dígitos (apenas números)');
+                return false;
+            }
+            
+            hideError('phone-error');
+            return true;
+        }
+
+        function validateBarbeiro() {
+            const barbeiro = document.getElementById('barbeiro').value;
+            if (!barbeiro) {
+                showError('barbeiro-error', 'Selecione um barbeiro');
+                return false;
+            }
+            hideError('barbeiro-error');
+            return true;
+        }
+
+        function validateDate() {
+            const date = document.getElementById('date').value;
+            if (!date) {
+                showError('date-error', 'Selecione uma data');
+                return false;
+            }
+            hideError('date-error');
+            return true;
+        }
+
+        function validateTime() {
+            const time = document.getElementById('time').value;
+            if (!time) {
+                showError('time-error', 'Selecione um horário');
+                return false;
+            }
+            hideError('time-error');
+            return true;
+        }
+
+        // Funções auxiliares de validação
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.style.display = 'none';
+        }
+
+        function hideAllErrors() {
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => {
+                element.style.display = 'none';
+            });
+        }
+
+        // Enviar e-mail de confirmação (simulado)
+        function sendConfirmationEmail(name, date, time, service) {
+            console.log('📧 E-mail de confirmação enviado para:', name);
+            console.log('📅 Detalhes do agendamento:', { date, time, service });
+            // Em um sistema real, aqui seria uma chamada para uma API de e-mail
+        }
+
+        // Mostrar modal de confirmação
+        function showConfirmModal(title, message, type = 'confirm') {
+            confirmModalTitle.textContent = title;
+            confirmModalMessage.textContent = message;
+            
+            if (type === 'success' || type === 'error') {
+                confirmModalTitle.style.color = type === 'success' ? 'var(--success)' : 'var(--danger)';
+                confirmCancelBtn.style.display = 'none';
+                confirmOkBtn.textContent = 'OK';
+            } else {
+                confirmCancelBtn.style.display = 'inline-flex';
+                confirmOkBtn.textContent = 'Confirmar';
+            }
+            
+            confirmModal.classList.add('active');
+        }
+
+        // Fechar modal de confirmação
+        function closeConfirmModal() {
+            confirmModal.classList.remove('active');
+        }
+
+        // Manipular ação de confirmação
+        function handleConfirmAction() {
+            closeConfirmModal();
+        }
+    </script>
+</body>
+</html>

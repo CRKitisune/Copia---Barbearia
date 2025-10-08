@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Barbearia Nativa - Sistema Administrativo">
+    <title>Admin - Barbearia Nativa</title>
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #d4af37;
+            --accent: #c9a227;
+            --light: #f8f9fa;
+            --dark: #121212;
+            --gray: #6c757d;
+            --text: #333;
+            --text-light: #fff;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Principal */
+        .main-header {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            border: 1px solid #25D366;
+        }
+        
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            border-color: #128C7E;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent);
+        }
+        
+        /* Login Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .login-modal {
+            background: white;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 90%;
+            transform: scale(0.8);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .modal-overlay.active .login-modal {
+            transform: scale(1);
+        }
+        
+        .modal-header {
+            padding: 25px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        
+        .btn-login {
+            background: var(--secondary);
+            color: var(--primary);
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+        }
+        
+        .btn-login:hover {
+            background: var(--accent);
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Admin Dashboard (oculto inicialmente) */
+        .admin-dashboard {
+            display: none;
+            padding: 30px 0;
+        }
+        
+        .admin-dashboard.active {
+            display: block;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dashboard-title {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        <!--   .btn-logout {
+            background: var(--danger);
+            color: white;
+        } -->
+        
+        .btn-logout:hover {
+            background: #c82333;
+        }
+        
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            border-radius: 8px 8px 0 0;
+            overflow-x: auto;
+        }
+        
+        .nav-tab {
+            padding: 15px 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .nav-tab.active {
+            border-bottom: 3px solid var(--secondary);
+            color: var(--secondary);
+        }
+        
+        .nav-tab:hover {
+            background: #f8f9fa;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 30px 0;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .section-title {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-title h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .service-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: var(--transition);
+            background: white;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .service-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+        
+        .service-price {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .service-client {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .client-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .client-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+        
+        .client-info p {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .service-time {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        /* Financial Summary */
+        .financial-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .summary-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .summary-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+        }
+        
+        .icon-pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: var(--warning);
+        }
+        
+        .icon-completed {
+            background: rgba(40, 167, 69, 0.2);
+            color: var(--success);
+        }
+        
+        .icon-revenue {
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--secondary);
+        }
+        
+        .summary-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .summary-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Reviews Section */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .review-client {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .review-date {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+        
+        .review-rating {
+            display: flex;
+            gap: 3px;
+            margin: 10px 0;
+        }
+        
+        .star {
+            color: #ddd;
+        }
+        
+        .star.filled {
+            color: var(--secondary);
+        }
+        
+        .review-text {
+            color: var(--text);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+        
+        .no-reviews {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--gray);
+        }
+        
+        .no-reviews i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+        }
+        
+        /* Table */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status-pending {
+            background: rgba(255, 193, 7, 0.2);
+            color: var(--warning);
+        }
+        
+        .status-completed {
+            background: rgba(40, 167, 69, 0.2);
+            color: var(--success);
+        }
+        
+        /* Employee Modal */
+        .employee-modal, .service-modal {
+            background: white;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.8);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .modal-overlay.active .employee-modal,
+        .modal-overlay.active .service-modal {
+            transform: scale(1);
+        }
+        
+        .modal-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        /* Custom Modal */
+        .custom-modal {
+            background: white;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.8);
+            transition: var(--transition);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .modal-overlay.active .custom-modal {
+            transform: scale(1);
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        /* Services Management */
+        .services-management {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .service-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .service-card-name {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+        
+        .service-card-price {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.3rem;
+        }
+        
+        .service-card-duration {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .service-card-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .financial-summary {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .nav-tab {
+                flex: 1;
+                min-width: 120px;
+                text-align: center;
+            }
+            
+            .section-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .reviews-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-management {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-actions {
+                flex-direction: column;
+            }
+            
+            .table {
+                font-size: 0.85rem;
+            }
+            
+            .table th, .table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header Principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-cut"></i>
+                    <span>Barbearia Nativa - Admin</span>
+                </div>
+                
+                <div class="user-info">
+                    <a href="whatsapp-admin.html" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="index.html" class="btn btn-outline">
+                        <i class="fas fa-home"></i> Voltar ao Site
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modal de Login -->
+    <div class="modal-overlay active" id="login-modal">
+        <div class="login-modal">
+            <div class="modal-header">
+                <h3>Acesso Administrativo</h3>
+            </div>
+            <div class="modal-body">
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" placeholder="Digite seu usuário" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" placeholder="Digite sua senha" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-login">
+                        <i class="fas fa-sign-in-alt"></i> Entrar
+                    </button>
+                </form>
+                
+                <div class="login-footer">
+                    <p>Acesso restrito para administradores</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Colaborador -->
+    <div class="modal-overlay" id="employee-modal">
+        <div class="employee-modal">
+            <div class="modal-header">
+                <h3 id="employee-modal-title">Adicionar Colaborador</h3>
+            </div>
+            <div class="modal-body">
+                <form id="employee-form">
+                    <div class="form-group">
+                        <label for="employee-name">Nome</label>
+                        <input type="text" id="employee-name" placeholder="Nome do colaborador" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employee-role">Cargo</label>
+                        <select id="employee-role" required>
+                            <option value="">Selecione um cargo</option>
+                            <option value="Barbeiro Sênior">Barbeiro Sênior</option>
+                            <option value="Barbeiro">Barbeiro</option>
+                            <option value="Aprendiz">Aprendiz</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employee-phone">Telefone</label>
+                        <input type="text" id="employee-phone" placeholder="11999999999" pattern="[0-9]*" inputmode="numeric" maxlength="11" required>
+                        <small style="color: #e74c3c;">⚠️ Apenas números! DDD + número</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employee-email">E-mail</label>
+                        <input type="email" id="employee-email" placeholder="colaborador@exemplo.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employee-status">Status</label>
+                        <select id="employee-status" required>
+                            <option value="Ativo">Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                            <option value="Treinamento">Treinamento</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employee-specialties">Especialidades (separadas por vírgula)</label>
+                        <input type="text" id="employee-specialties" placeholder="Corte, Barba, Pacote Completo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="employee-notes">Observações</label>
+                        <textarea id="employee-notes" placeholder="Observações sobre o colaborador" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-employee">Cancelar</button>
+                <button class="btn btn-primary" id="save-employee">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Serviço -->
+    <div class="modal-overlay" id="service-modal">
+        <div class="service-modal">
+            <div class="modal-header">
+                <h3 id="service-modal-title">Adicionar Serviço</h3>
+            </div>
+            <div class="modal-body">
+                <form id="service-form">
+                    <div class="form-group">
+                        <label for="service-name">Nome do Serviço</label>
+                        <input type="text" id="service-name" placeholder="Nome do serviço" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service-description">Descrição</label>
+                        <textarea id="service-description" placeholder="Descrição do serviço" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service-price">Preço (R$)</label>
+                        <input type="number" id="service-price" placeholder="0.00" min="0" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service-duration">Duração (minutos)</label>
+                        <input type="number" id="service-duration" placeholder="30" min="5" step="5" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service-status">Status</label>
+                        <select id="service-status" required>
+                            <option value="Ativo">Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancel-service">Cancelar</button>
+                <button class="btn btn-primary" id="save-service">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div class="modal-overlay" id="confirm-modal">
+        <div class="custom-modal">
+            <div class="modal-header">
+                <h3 id="confirm-modal-title">Confirmação</h3>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-modal-message">Tem certeza que deseja realizar esta ação?</p>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" id="confirm-cancel">Cancelar</button>
+                    <button class="btn btn-primary" id="confirm-ok">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Administrativo -->
+    <div class="admin-dashboard" id="admin-dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Painel Administrativo</h1>
+                <div class="user-info">
+                    <span>Olá, Administrador</span>
+                    <div class="user-avatar">A</div>
+                     <button class="btn btn-logout" id="logout-btn"> 
+                        <i class="fas fa-sign-out-alt"></i> Sair 
+                    </button>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="nav-tabs">
+                <div class="nav-tab active" data-tab="services">Serviços Pendentes</div>
+                <div class="nav-tab" data-tab="completed">Serviços Concluídos</div>
+                <div class="nav-tab" data-tab="reviews">Avaliações</div>
+                <div class="nav-tab" data-tab="financial">Resumo Financeiro</div>
+                <div class="nav-tab" data-tab="employees">Colaboradores</div>
+                <div class="nav-tab" data-tab="services-management">Serviços</div>
+            </div>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Serviços Pendentes -->
+                <div class="tab-content active" id="services-tab">
+                    <div class="section-title">
+                        <h2>Serviços Pendentes</h2>
+                        <div>
+                            <span id="pending-count">0</span> serviços agendados para hoje
+                        </div>
+                    </div>
+
+                    <div class="financial-summary">
+                        <div class="summary-card">
+                            <div class="summary-icon icon-pending">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="summary-value" id="pending-total">0</div>
+                            <div class="summary-label">Serviços Pendentes</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon icon-revenue">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="summary-value" id="pending-revenue">R$ 0,00</div>
+                            <div class="summary-label">Valor Total</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon icon-completed">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="summary-value">0</div>
+                            <div class="summary-label">Concluídos (Semana)</div>
+                        </div>
+                    </div>
+
+                    <div class="services-grid" id="pending-services">
+                        <!-- Serviços serão carregados via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Serviços Concluídos -->
+                <div class="tab-content" id="completed-tab">
+                    <div class="section-title">
+                        <h2>Serviços Concluídos</h2>
+                        <div>
+                            <span id="completed-count">0</span> serviços esta semana
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Histórico de Serviços</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Serviço</th>
+                                        <th>Data</th>
+                                        <th>Valor</th>
+                                        <th>Colaborador</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="completed-services-table">
+                                    <!-- Conteúdo será carregado via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avaliações -->
+                <div class="tab-content" id="reviews-tab">
+                    <div class="section-title">
+                        <h2>Avaliações dos Clientes</h2>
+                        <div>
+                            <span id="review-count">0</span> <i class="fas fa-star" style="color: var(--secondary);"></i> (0 avaliações)
+                        </div>
+                    </div>
+
+                    <div class="reviews-container" id="reviews-list">
+                        <!-- Avaliações serão carregadas via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Resumo Financeiro -->
+                <div class="tab-content" id="financial-tab">
+                    <div class="section-title">
+                        <h2>Resumo Financeiro</h2>
+                        <div>Período: Esta semana</div>
+                    </div>
+
+                    <div class="financial-summary">
+                        <div class="summary-card">
+                            <div class="summary-icon icon-revenue">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="summary-value">R$ 0,00</div>
+                            <div class="summary-label">Faturamento Total</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon icon-completed">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="summary-value">0</div>
+                            <div class="summary-label">Serviços Realizados</div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon icon-pending">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="summary-value">0</div>
+                            <div class="summary-label">Clientes Atendidos</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Detalhamento por Serviço</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Serviço</th>
+                                        <th>Quantidade</th>
+                                        <th>Valor Unitário</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="financial-details">
+                                    <!-- Conteúdo será carregado via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colaboradores -->
+                <div class="tab-content" id="employees-tab">
+                    <div class="section-title">
+                        <h2>Gerenciar Colaboradores</h2>
+                        <button class="btn btn-primary" id="add-employee-btn">
+                            <i class="fas fa-plus"></i> Novo Colaborador
+                        </button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Equipe de Colaboradores</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Cargo</th>
+                                        <th>Serviços (Semana)</th>
+                                        <th>Avaliação</th>
+                                        <th>Status</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="employees-table">
+                                    <!-- Conteúdo será carregado via JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gerenciamento de Serviços -->
+                <div class="tab-content" id="services-management-tab">
+                    <div class="section-title">
+                        <h2>Gerenciar Serviços</h2>
+                        <div>
+                            <button class="btn btn-primary" id="add-service-btn">
+                                <i class="fas fa-plus"></i> Novo Serviço
+                            </button>
+                            <button class="btn btn-outline" id="view-site-services-btn">
+                                <i class="fas fa-eye"></i> Ver Serviços do Site
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="services-management" id="services-list">
+                        <!-- Serviços serão carregados via JavaScript -->
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Constantes para chaves de armazenamento
+        const STORAGE_KEYS = {
+            SERVICES: 'barbearia_services',
+            APPOINTMENTS: 'barbearia_appointments',
+            EMPLOYEES: 'barbearia_employees',
+            REVIEWS: 'barbearia_reviews'
+        };
+
+        // Dados iniciais para avaliações
+        const initialReviewsData = [
+            {
+                id: 1,
+                client: { name: "Carlos Silva" },
+                date: "2023-11-14",
+                rating: 5,
+                comment: "Excelente atendimento! O Rodrigo é um profissional incrível, sempre muito atencioso e com um trabalho impecável.",
+                employee: "Rodrigo"
+            },
+            {
+                id: 2,
+                client: { name: "André Santos" },
+                date: "2023-11-13",
+                rating: 4,
+                comment: "Ambiente aconchegante e profissional qualificado. Recomendo!",
+                employee: "Carlos"
+            },
+            {
+                id: 3,
+                client: { name: "Roberto Almeida" },
+                date: "2023-11-12",
+                rating: 5,
+                comment: "A Barbearia Nativa transformou minha autoestima. Sempre saio de lá renovado.",
+                employee: "Rodrigo"
+            }
+        ];
+
+        const initialSiteServicesData = [
+            {
+                id: 1,
+                name: "Corte de Cabelo",
+                description: "Corte profissional com técnicas tradicionais e modernas, utilizando os melhores produtos do mercado.",
+                price: 50,
+                duration: 30,
+                status: "Ativo"
+            },
+            {
+                id: 2,
+                name: "Barba Completa",
+                description: "Modelagem e acabamento perfeito para sua barba, com toalha quente e produtos premium.",
+                price: 40,
+                duration: 20,
+                status: "Ativo"
+            },
+            {
+                id: 3,
+                name: "Pacote Completo",
+                description: "Corte de cabelo + barba + tratamento capilar. A experiência completa de cuidados masculinos.",
+                price: 80,
+                duration: 60,
+                status: "Ativo"
+            }
+        ];
+
+        // Dados iniciais para colaboradores
+        const initialEmployeesData = [
+            {
+                id: 1,
+                nome: "Rodrigo Silva",
+                cargo: "Barbeiro Sênior",
+                telefone: "11999999999",
+                email: "rodrigo@barbearia.com",
+                status: "Ativo",
+                especialidades: ["Corte", "Barba", "Pacote Completo"],
+                servicos_semana: 15,
+                avaliacao: 4.8
+            },
+            {
+                id: 2,
+                nome: "Carlos Santos",
+                cargo: "Barbeiro",
+                telefone: "11988888888",
+                email: "carlos@barbearia.com",
+                status: "Ativo",
+                especialidades: ["Corte", "Barba"],
+                servicos_semana: 12,
+                avaliacao: 4.5
+            }
+        ];
+
+        // Dados iniciais para agendamentos
+        const initialAppointmentsData = [
+            {
+                id: 1,
+                cliente_nome: "João Silva",
+                cliente_telefone: "11977777777",
+                servico_nome: "Corte de Cabelo",
+                servico_preco: 50,
+                data_agendamento: new Date().toISOString().split('T')[0],
+                horario: "14:00",
+                duracao_estimada: 30,
+                colaborador_nome: "Rodrigo",
+                status: "pending",
+                observacoes: "Corte moderno"
+            },
+            {
+                id: 2,
+                cliente_nome: "Maria Santos",
+                cliente_telefone: "11966666666",
+                servico_nome: "Barba Completa",
+                servico_preco: 40,
+                data_agendamento: new Date().toISOString().split('T')[0],
+                horario: "15:00",
+                duracao_estimada: 20,
+                colaborador_nome: "Carlos",
+                status: "pending",
+                observacoes: "Barba modelada"
+            }
+        ];
+
+        // Funções de armazenamento
+        function saveToStorage(key, data) {
+            try {
+                localStorage.setItem(key, JSON.stringify(data));
+                console.log(`✅ Dados salvos em ${key}`);
+                return true;
+            } catch (error) {
+                console.error(`❌ Erro ao salvar em ${key}:`, error);
+                return false;
+            }
+        }
+
+        function loadFromStorage(key, defaultValue = []) {
+            try {
+                const data = localStorage.getItem(key);
+                return data ? JSON.parse(data) : defaultValue;
+            } catch (error) {
+                console.error(`❌ Erro ao carregar de ${key}:`, error);
+                return defaultValue;
+            }
+        }
+
+        // Carregar dados do LocalStorage ou usar dados iniciais
+        let reviewsData = loadFromStorage(STORAGE_KEYS.REVIEWS, initialReviewsData);
+        let employeesData = loadFromStorage(STORAGE_KEYS.EMPLOYEES, initialEmployeesData);
+        let siteServicesData = loadFromStorage(STORAGE_KEYS.SERVICES, initialSiteServicesData);
+        let appointmentsData = loadFromStorage(STORAGE_KEYS.APPOINTMENTS, initialAppointmentsData);
+
+        // Elementos DOM
+        const loginModal = document.getElementById('login-modal');
+        const adminDashboard = document.getElementById('admin-dashboard');
+        const loginForm = document.getElementById('login-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const employeeModal = document.getElementById('employee-modal');
+        const addEmployeeBtn = document.getElementById('add-employee-btn');
+        const cancelEmployeeBtn = document.getElementById('cancel-employee');
+        const saveEmployeeBtn = document.getElementById('save-employee');
+        const employeeForm = document.getElementById('employee-form');
+        const employeeModalTitle = document.getElementById('employee-modal-title');
+        const serviceModal = document.getElementById('service-modal');
+        const addServiceBtn = document.getElementById('add-service-btn');
+        const cancelServiceBtn = document.getElementById('cancel-service');
+        const saveServiceBtn = document.getElementById('save-service');
+        const serviceForm = document.getElementById('service-form');
+        const serviceModalTitle = document.getElementById('service-modal-title');
+        const viewSiteServicesBtn = document.getElementById('view-site-services-btn');
+        const confirmModal = document.getElementById('confirm-modal');
+        const confirmModalTitle = document.getElementById('confirm-modal-title');
+        const confirmModalMessage = document.getElementById('confirm-modal-message');
+        const confirmCancelBtn = document.getElementById('confirm-cancel');
+        const confirmOkBtn = document.getElementById('confirm-ok');
+
+        // Credenciais de administrador
+        const adminCredentials = {
+            username: 'admin',
+            password: 'admin'
+        };
+
+        // Variáveis para controle
+        let currentEditingEmployeeId = null;
+        let currentEditingServiceId = null;
+        let currentConfirmAction = null;
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se já está logado
+            if (localStorage.getItem('adminLoggedIn') === 'true') {
+                showAdminDashboard();
+            }
+            
+            setupEventListeners();
+            
+            // Debug: mostrar dados carregados
+            console.log('📊 Dados carregados:');
+            console.log('💇 Serviços cadastrados:', siteServicesData.length);
+            console.log('👥 Colaboradores:', employeesData.length);
+            console.log('⭐ Avaliações:', reviewsData.length);
+            console.log('📅 Agendamentos:', appointmentsData.length);
+        });
+
+        // Configurar event listeners
+        function setupEventListeners() {
+            // Submeter formulário de login
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                if (username === adminCredentials.username && password === adminCredentials.password) {
+                    loginModal.classList.remove('active');
+                    showAdminDashboard();
+                    localStorage.setItem('adminLoggedIn', 'true');
+                } else {
+                    showConfirmModal('Erro de Login', 'Credenciais inválidas. Tente novamente.', 'error');
+                }
+            });
+
+            // Logout
+            logoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('adminLoggedIn');
+                hideAdminDashboard();
+            });
+
+            // Navegação entre abas
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Atualizar aba ativa
+                    navTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Mostrar conteúdo da aba
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                    
+                    // Carregar dados específicos da aba
+                    if (tabId === 'services') loadPendingServices();
+                    if (tabId === 'completed') loadCompletedServices();
+                    if (tabId === 'reviews') loadReviews();
+                    if (tabId === 'financial') loadFinancialDetails();
+                    if (tabId === 'employees') loadEmployees();
+                    if (tabId === 'services-management') loadServicesManagement();
+                });
+            });
+
+            // Gerenciamento de colaboradores
+            addEmployeeBtn.addEventListener('click', function() {
+                openEmployeeModal();
+            });
+
+            cancelEmployeeBtn.addEventListener('click', function() {
+                closeEmployeeModal();
+            });
+
+            saveEmployeeBtn.addEventListener('click', function() {
+                saveEmployee();
+            });
+
+            // Gerenciamento de serviços
+            addServiceBtn.addEventListener('click', function() {
+                openServiceModal();
+            });
+
+            cancelServiceBtn.addEventListener('click', function() {
+                closeServiceModal();
+            });
+
+            saveServiceBtn.addEventListener('click', function() {
+                saveService();
+            });
+
+            viewSiteServicesBtn.addEventListener('click', function() {
+                loadServicesManagement();
+            });
+
+            // Modal de confirmação
+            confirmCancelBtn.addEventListener('click', function() {
+                closeConfirmModal();
+            });
+
+            confirmOkBtn.addEventListener('click', function() {
+                if (currentConfirmAction) {
+                    currentConfirmAction();
+                }
+                closeConfirmModal();
+            });
+
+            // Fechar modais ao clicar no overlay
+            document.querySelectorAll('.modal-overlay').forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                    }
+                });
+            });
+
+            // Filtrar apenas números no input do telefone do funcionário
+            document.getElementById('employee-phone').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 11) {
+                    value = value.substring(0, 11);
+                }
+                e.target.value = value;
+            });
+
+            // Prevenir colar caracteres não numéricos no telefone do funcionário
+            document.getElementById('employee-phone').addEventListener('paste', function(e) {
+                e.preventDefault();
+                let paste = (e.clipboardData || window.clipboardData).getData('text');
+                let numbersOnly = paste.replace(/\D/g, '');
+                if (numbersOnly.length > 11) {
+                    numbersOnly = numbersOnly.substring(0, 11);
+                }
+                e.target.value = numbersOnly;
+            });
+
+        }
+
+        // Mostrar dashboard administrativo
+        function showAdminDashboard() {
+            adminDashboard.classList.add('active');
+            loadPendingServices();
+        }
+
+        // Ocultar dashboard administrativo
+        function hideAdminDashboard() {
+            adminDashboard.classList.remove('active');
+            loginModal.classList.add('active');
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Carregar serviços pendentes
+        function loadPendingServices() {
+            const pendingServicesContainer = document.getElementById('pending-services');
+            pendingServicesContainer.innerHTML = '';
+            let totalRevenue = 0;
+
+            // Filtrar apenas os pendentes
+            const pendingAppointments = appointmentsData.filter(apt => 
+                apt.status === 'pending' || apt.status === 'Agendado'
+            );
+
+            if (pendingAppointments.length === 0) {
+                pendingServicesContainer.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-clock" style="font-size: 3rem; color: var(--gray); margin-bottom: 15px;"></i>
+                        <h3>Nenhum agendamento pendente</h3>
+                        <p>Os agendamentos feitos pelo site aparecerão aqui.</p>
+                    </div>
+                `;
+            } else {
+                pendingAppointments.forEach(appointment => {
+                    const clientName = appointment.cliente_nome || appointment.client?.name || 'Cliente não especificado';
+                    const clientPhone = appointment.cliente_telefone || appointment.client?.phone || '';
+                    const serviceName = appointment.servico_nome || appointment.service?.name || 'Serviço não especificado';
+                    const servicePrice = appointment.servico_preco || appointment.service?.price || 0;
+                    const date = appointment.data_agendamento || appointment.date || '';
+                    const time = appointment.horario || appointment.horario_agendamento || appointment.time || '';
+                    const duration = appointment.duracao_estimada || appointment.service?.duration || 0;
+                    const barbeiro = appointment.colaborador_nome || appointment.barbeiro || appointment.employee || 'A definir';
+                    const notes = appointment.observacoes || appointment.notes || '';
+                    
+                    totalRevenue += servicePrice;
+                    
+                    const serviceElement = document.createElement('div');
+                    serviceElement.className = 'service-item';
+                    serviceElement.innerHTML = `
+                        <div class="service-header">
+                            <div class="service-name">${serviceName}</div>
+                            <div class="service-price">R$ ${servicePrice.toFixed(2)}</div>
+                        </div>
+                        <div class="service-client">
+                            <div class="client-avatar">${clientName.charAt(0)}</div>
+                            <div class="client-info">
+                                <h4>${clientName}</h4>
+                                <p>${clientPhone}</p>
+                            </div>
+                        </div>
+                        <div class="service-time">
+                            <i class="far fa-clock"></i>
+                            <span>${formatDate(date)} • ${time} (${duration} min)</span>
+                        </div>
+                        <div class="service-time">
+                            <i class="fas fa-user"></i>
+                            <span>Colaborador: ${barbeiro}</span>
+                        </div>
+                        ${notes ? `<p><strong>Observações:</strong> ${notes}</p>` : ''}
+                        <div class="service-actions">
+                            <button class="btn btn-success complete-service" data-id="${appointment.id}">
+                                <i class="fas fa-check"></i> Finalizar
+                            </button>
+                            <button class="btn btn-outline contact-client" data-phone="${clientPhone}">
+                                <i class="fas fa-phone"></i> Contatar
+                            </button>
+                        </div>
+                    `;
+                    
+                    pendingServicesContainer.appendChild(serviceElement);
+                });
+
+                // Adicionar event listeners aos botões
+                document.querySelectorAll('.complete-service').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const serviceId = parseInt(this.getAttribute('data-id'));
+                        completeService(serviceId);
+                    });
+                });
+
+                document.querySelectorAll('.contact-client').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const phone = this.getAttribute('data-phone');
+                        contactClient(phone);
+                    });
+                });
+            }
+
+            // Atualizar contadores
+            document.getElementById('pending-count').textContent = pendingAppointments.length;
+            document.getElementById('pending-total').textContent = pendingAppointments.length;
+            document.getElementById('pending-revenue').textContent = `R$ ${totalRevenue.toFixed(2)}`;
+        }
+
+        // Carregar serviços concluídos
+        function loadCompletedServices() {
+            const completedServicesTable = document.getElementById('completed-services-table');
+            completedServicesTable.innerHTML = '';
+            
+            // Filtrar apenas os concluídos
+            const completedAppointments = appointmentsData.filter(apt => 
+                apt.status === 'completed' || apt.status === 'Concluído'
+            );
+
+            if (completedAppointments.length === 0) {
+                completedServicesTable.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 40px;">
+                            <i class="fas fa-check-circle" style="font-size: 2rem; color: var(--gray); margin-bottom: 10px;"></i>
+                            <p>Nenhum serviço concluído ainda</p>
+                        </td>
+                    </tr>
+                `;
+            } else {
+                completedAppointments.forEach(appointment => {
+                    const clientName = appointment.cliente_nome || appointment.client?.name || 'Cliente não especificado';
+                    const serviceName = appointment.servico_nome || appointment.service?.name || 'Serviço não especificado';
+                    const date = appointment.data_agendamento || appointment.date || '';
+                    const time = appointment.horario || appointment.horario_agendamento || appointment.time || '';
+                    const price = appointment.servico_preco || appointment.service?.price || 0;
+                    const barbeiro = appointment.colaborador_nome || appointment.barbeiro || appointment.employee || 'A definir';
+                    
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${clientName}</td>
+                        <td>${serviceName}</td>
+                        <td>${formatDate(date)} ${time}</td>
+                        <td>R$ ${price.toFixed(2)}</td>
+                        <td>${barbeiro}</td>
+                        <td><span class="status-badge status-completed">Concluído</span></td>
+                    `;
+                    
+                    completedServicesTable.appendChild(row);
+                });
+            }
+
+            document.getElementById('completed-count').textContent = completedAppointments.length;
+        }
+
+        // Carregar avaliações
+        function loadReviews() {
+            const reviewsList = document.getElementById('reviews-list');
+            reviewsList.innerHTML = '';
+            
+            if (reviewsData.length === 0) {
+                reviewsList.innerHTML = `
+                    <div class="no-reviews">
+                        <i class="far fa-comment-alt"></i>
+                        <h3>Nenhuma avaliação ainda</h3>
+                        <p>As avaliações dos clientes aparecerão aqui.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let totalRating = 0;
+            
+            reviewsData.forEach(review => {
+                totalRating += review.rating;
+                
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review-card';
+                reviewElement.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-client">
+                            <div class="client-avatar">${review.client.name.charAt(0)}</div>
+                            <div>
+                                <h4>${review.client.name}</h4>
+                                <div class="review-date">${formatDate(review.date)}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        ${generateStars(review.rating)}
+                    </div>
+                    <div class="review-text">
+                        ${review.comment}
+                    </div>
+                    <div class="review-employee" style="margin-top: 10px; font-size: 0.9rem; color: var(--gray);">
+                        <i class="fas fa-user"></i> Atendido por: ${review.employee}
+                    </div>
+                `;
+                
+                reviewsList.appendChild(reviewElement);
+            });
+
+            // Calcular média de avaliações
+            const averageRating = (totalRating / reviewsData.length).toFixed(1);
+            document.getElementById('review-count').textContent = averageRating;
+        }
+
+        // Carregar detalhes financeiros
+        function loadFinancialDetails() {
+            const financialDetails = document.getElementById('financial-details');
+            financialDetails.innerHTML = '';
+            
+            // Calcular totais por serviço
+            const serviceTotals = {};
+            
+            appointmentsData.forEach(appointment => {
+                const serviceName = appointment.servico_nome || appointment.service?.name || 'Serviço não especificado';
+                const servicePrice = appointment.servico_preco || appointment.service?.price || 0;
+                
+                if (!serviceTotals[serviceName]) {
+                    serviceTotals[serviceName] = {
+                        count: 0,
+                        total: 0,
+                        price: servicePrice
+                    };
+                }
+                
+                serviceTotals[serviceName].count++;
+                serviceTotals[serviceName].total += servicePrice;
+            });
+            
+            // Adicionar linhas na tabela
+            for (const serviceName in serviceTotals) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${serviceName}</td>
+                    <td>${serviceTotals[serviceName].count}</td>
+                    <td>R$ ${serviceTotals[serviceName].price.toFixed(2)}</td>
+                    <td>R$ ${serviceTotals[serviceName].total.toFixed(2)}</td>
+                `;
+                
+                financialDetails.appendChild(row);
+            }
+
+            // Atualizar resumo financeiro
+            const totalRevenue = appointmentsData.reduce((sum, service) => sum + (service.servico_preco || service.service?.price || 0), 0);
+            const uniqueClients = new Set(appointmentsData.map(s => s.cliente_nome || s.client?.name)).size;
+            
+            document.querySelector('.financial-summary .summary-card:nth-child(1) .summary-value').textContent = `R$ ${totalRevenue.toFixed(2)}`;
+            document.querySelector('.financial-summary .summary-card:nth-child(2) .summary-value').textContent = appointmentsData.length;
+            document.querySelector('.financial-summary .summary-card:nth-child(3) .summary-value').textContent = uniqueClients;
+        }
+
+        // Carregar colaboradores
+        function loadEmployees() {
+            const employeesTable = document.getElementById('employees-table');
+            employeesTable.innerHTML = '';
+            
+            if (employeesData.length === 0) {
+                employeesTable.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 40px;">
+                            <i class="fas fa-users" style="font-size: 2rem; color: var(--gray); margin-bottom: 10px;"></i>
+                            <p>Nenhum colaborador cadastrado</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            employeesData.forEach(employee => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${employee.nome}</td>
+                    <td>${employee.cargo}</td>
+                    <td>${employee.servicos_semana || 0}</td>
+                    <td>${employee.avaliacao || 0} <i class="fas fa-star" style="color: var(--secondary);"></i></td>
+                    <td><span class="status-badge ${getStatusClass(employee.status)}">${employee.status}</span></td>
+                    <td>
+                        <button class="btn btn-outline edit-employee" data-id="${employee.id}" style="padding: 5px 10px; font-size: 0.8rem;">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-outline delete-employee" data-id="${employee.id}" style="padding: 5px 10px; font-size: 0.8rem; margin-left: 5px;">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                
+                employeesTable.appendChild(row);
+            });
+
+            // Adicionar event listeners aos botões
+            document.querySelectorAll('.edit-employee').forEach(button => {
+                button.addEventListener('click', function() {
+                    const employeeId = parseInt(this.getAttribute('data-id'));
+                    openEmployeeModal(employeeId);
+                });
+            });
+
+            document.querySelectorAll('.delete-employee').forEach(button => {
+                button.addEventListener('click', function() {
+                    const employeeId = parseInt(this.getAttribute('data-id'));
+                    showConfirmModal(
+                        'Excluir Colaborador', 
+                        'Tem certeza que deseja excluir este colaborador?', 
+                        function() { deleteEmployee(employeeId); }
+                    );
+                });
+            });
+        }
+
+        // Carregar gerenciamento de serviços
+        function loadServicesManagement() {
+            const servicesList = document.getElementById('services-list');
+            servicesList.innerHTML = '';
+            
+            if (siteServicesData.length === 0) {
+                servicesList.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-cut" style="font-size: 3rem; color: var(--gray); margin-bottom: 15px;"></i>
+                        <h3>Nenhum serviço cadastrado</h3>
+                        <p>Adicione serviços para que apareçam no site.</p>
+                    </div>
+                `;
+            } else {
+                siteServicesData.forEach(service => {
+                    const serviceCard = document.createElement('div');
+                    serviceCard.className = 'service-card';
+                    serviceCard.innerHTML = `
+                        <div class="service-card-header">
+                            <div class="service-card-name">${service.name}</div>
+                            <div class="service-card-price">R$ ${service.price.toFixed(2)}</div>
+                        </div>
+                        <div class="service-card-duration">
+                            <i class="far fa-clock"></i> ${service.duration} minutos
+                        </div>
+                        <p>${service.description}</p>
+                        <div class="service-status" style="margin: 10px 0;">
+                            <span class="status-badge ${service.status === 'Ativo' ? 'status-completed' : 'status-pending'}">
+                                ${service.status}
+                            </span>
+                        </div>
+                        <div class="service-card-actions">
+                            <button class="btn btn-outline edit-service" data-id="${service.id}" style="padding: 5px 10px; font-size: 0.8rem;">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn btn-outline delete-service" data-id="${service.id}" style="padding: 5px 10px; font-size: 0.8rem;">
+                                <i class="fas fa-trash"></i> Excluir
+                            </button>
+                        </div>
+                    `;
+                    
+                    servicesList.appendChild(serviceCard);
+                });
+            }
+
+            // Adicionar event listeners aos botões
+            document.querySelectorAll('.edit-service').forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceId = parseInt(this.getAttribute('data-id'));
+                    openServiceModal(serviceId);
+                });
+            });
+
+            document.querySelectorAll('.delete-service').forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceId = parseInt(this.getAttribute('data-id'));
+                    showConfirmModal(
+                        'Excluir Serviço', 
+                        'Tem certeza que deseja excluir este serviço?', 
+                        function() { deleteService(serviceId); }
+                    );
+                });
+            });
+        }
+
+        // Finalizar serviço
+        function completeService(serviceId) {
+            // Encontrar e atualizar o agendamento
+            const appointmentIndex = appointmentsData.findIndex(apt => apt.id === serviceId);
+            
+            if (appointmentIndex !== -1) {
+                const barbeiro = appointmentsData[appointmentIndex].colaborador_nome || 'Rodrigo';
+                
+                // Atualizar status para concluído
+                appointmentsData[appointmentIndex].status = 'completed';
+                appointmentsData[appointmentIndex].completedAt = new Date().toISOString();
+                appointmentsData[appointmentIndex].colaborador_nome = barbeiro;
+                
+                // Salvar no localStorage
+                const success = saveToStorage(STORAGE_KEYS.APPOINTMENTS, appointmentsData);
+                
+                if (success) {
+                    loadPendingServices();
+                    showConfirmModal('Sucesso', `Serviço de ${appointmentsData[appointmentIndex].cliente_nome} concluído com sucesso!`, 'success');
+                } else {
+                    showConfirmModal('Erro', 'Erro ao salvar alterações.', 'error');
+                }
+            } else {
+                showConfirmModal('Erro', 'Agendamento não encontrado.', 'error');
+            }
+        }
+
+        // Contatar cliente
+        function contactClient(phone) {
+            showConfirmModal(
+                'Contatar Cliente', 
+                `Deseja contatar o cliente pelo telefone ${phone}?`, 
+                function() { 
+                    // Simulação de contato - em um sistema real, isso poderia abrir o aplicativo de telefone
+                    showConfirmModal('Sucesso', `Iniciando chamada para ${phone}`, 'success');
+                }
+            );
+        }
+
+        // Abrir modal de colaborador
+        function openEmployeeModal(employeeId = null) {
+            currentEditingEmployeeId = employeeId;
+            
+            if (employeeId) {
+                // Editar colaborador existente
+                const employee = employeesData.find(e => e.id === employeeId);
+                if (employee) {
+                    document.getElementById('employee-name').value = employee.nome;
+                    document.getElementById('employee-role').value = employee.cargo;
+                    document.getElementById('employee-phone').value = employee.telefone;
+                    document.getElementById('employee-email').value = employee.email;
+                    document.getElementById('employee-status').value = employee.status;
+                    document.getElementById('employee-specialties').value = employee.especialidades ? employee.especialidades.join(', ') : '';
+                    document.getElementById('employee-notes').value = employee.observacoes || '';
+                    employeeModalTitle.textContent = 'Editar Colaborador';
+                }
+            } else {
+                // Novo colaborador
+                employeeForm.reset();
+                employeeModalTitle.textContent = 'Adicionar Colaborador';
+            }
+            
+            employeeModal.classList.add('active');
+        }
+
+        // Fechar modal de colaborador
+        function closeEmployeeModal() {
+            employeeModal.classList.remove('active');
+            currentEditingEmployeeId = null;
+        }
+
+        // Salvar colaborador
+        function saveEmployee() {
+            const nome = document.getElementById('employee-name').value;
+            const cargo = document.getElementById('employee-role').value;
+            const telefone = document.getElementById('employee-phone').value;
+            const email = document.getElementById('employee-email').value;
+            const status = document.getElementById('employee-status').value;
+            const especialidadesText = document.getElementById('employee-specialties').value;
+            const observacoes = document.getElementById('employee-notes').value;
+            
+            if (!nome || !cargo || !telefone || !email || !status) {
+                showConfirmModal('Erro', 'Por favor, preencha todos os campos obrigatórios.', 'error');
+                return;
+            }
+            
+            const especialidades = especialidadesText ? especialidadesText.split(',').map(s => s.trim()).filter(s => s) : [];
+            
+            if (currentEditingEmployeeId) {
+                // Atualizar colaborador existente
+                const employeeIndex = employeesData.findIndex(e => e.id === currentEditingEmployeeId);
+                if (employeeIndex !== -1) {
+                    employeesData[employeeIndex] = {
+                        ...employeesData[employeeIndex],
+                        nome,
+                        cargo,
+                        telefone,
+                        email,
+                        status,
+                        especialidades,
+                        observacoes
+                    };
+                }
+            } else {
+                // Adicionar novo colaborador
+                const newEmployee = {
+                    id: employeesData.length > 0 ? Math.max(...employeesData.map(e => e.id)) + 1 : 1,
+                    nome,
+                    cargo,
+                    telefone,
+                    email,
+                    status,
+                    especialidades,
+                    observacoes,
+                    servicos_semana: 0,
+                    avaliacao: 0
+                };
+                employeesData.push(newEmployee);
+            }
+            
+            // Salvar no LocalStorage
+            const success = saveToStorage(STORAGE_KEYS.EMPLOYEES, employeesData);
+            
+            if (success) {
+                // Recarregar a lista de colaboradores
+                loadEmployees();
+                closeEmployeeModal();
+                showConfirmModal('Sucesso', 'Colaborador salvo com sucesso!', 'success');
+            } else {
+                showConfirmModal('Erro', 'Erro ao salvar colaborador.', 'error');
+            }
+        }
+
+        // Excluir colaborador
+        function deleteEmployee(employeeId) {
+            employeesData = employeesData.filter(e => e.id !== employeeId);
+            
+            // Salvar no LocalStorage
+            const success = saveToStorage(STORAGE_KEYS.EMPLOYEES, employeesData);
+            
+            if (success) {
+                loadEmployees();
+                showConfirmModal('Sucesso', 'Colaborador excluído com sucesso!', 'success');
+            } else {
+                showConfirmModal('Erro', 'Erro ao excluir colaborador.', 'error');
+            }
+        }
+
+        // Abrir modal de serviço
+        function openServiceModal(serviceId = null) {
+            currentEditingServiceId = serviceId;
+            
+            if (serviceId) {
+                // Editar serviço existente
+                const service = siteServicesData.find(s => s.id === serviceId);
+                if (service) {
+                    document.getElementById('service-name').value = service.name;
+                    document.getElementById('service-description').value = service.description;
+                    document.getElementById('service-price').value = service.price;
+                    document.getElementById('service-duration').value = service.duration;
+                    document.getElementById('service-status').value = service.status;
+                    serviceModalTitle.textContent = 'Editar Serviço';
+                }
+            } else {
+                // Novo serviço
+                serviceForm.reset();
+                serviceModalTitle.textContent = 'Adicionar Serviço';
+            }
+            
+            serviceModal.classList.add('active');
+        }
+
+        // Fechar modal de serviço
+        function closeServiceModal() {
+            serviceModal.classList.remove('active');
+            currentEditingServiceId = null;
+        }
+
+        // Salvar serviço
+        function saveService() {
+            const name = document.getElementById('service-name').value;
+            const description = document.getElementById('service-description').value;
+            const price = parseFloat(document.getElementById('service-price').value);
+            const duration = parseInt(document.getElementById('service-duration').value);
+            const status = document.getElementById('service-status').value;
+            
+            if (!name || !price || !duration || !status) {
+                showConfirmModal('Erro', 'Por favor, preencha todos os campos obrigatórios.', 'error');
+                return;
+            }
+            
+            if (currentEditingServiceId) {
+                // Atualizar serviço existente
+                const serviceIndex = siteServicesData.findIndex(s => s.id === currentEditingServiceId);
+                if (serviceIndex !== -1) {
+                    siteServicesData[serviceIndex] = {
+                        ...siteServicesData[serviceIndex],
+                        name,
+                        description,
+                        price,
+                        duration,
+                        status
+                    };
+                }
+            } else {
+                // Adicionar novo serviço
+                const newService = {
+                    id: siteServicesData.length > 0 ? Math.max(...siteServicesData.map(s => s.id)) + 1 : 1,
+                    name,
+                    description,
+                    price,
+                    duration,
+                    status
+                };
+                siteServicesData.push(newService);
+            }
+            
+            // Salvar no LocalStorage
+            const success = saveToStorage(STORAGE_KEYS.SERVICES, siteServicesData);
+            
+            if (success) {
+                // Recarregar a lista de serviços
+                loadServicesManagement();
+                closeServiceModal();
+                showConfirmModal('Sucesso', 'Serviço salvo com sucesso!', 'success');
+            } else {
+                showConfirmModal('Erro', 'Erro ao salvar serviço.', 'error');
+            }
+        }
+
+        // Excluir serviço
+        function deleteService(serviceId) {
+            siteServicesData = siteServicesData.filter(s => s.id !== serviceId);
+            
+            // Salvar no LocalStorage
+            const success = saveToStorage(STORAGE_KEYS.SERVICES, siteServicesData);
+            
+            if (success) {
+                loadServicesManagement();
+                showConfirmModal('Sucesso', 'Serviço excluído com sucesso!', 'success');
+            } else {
+                showConfirmModal('Erro', 'Erro ao excluir serviço.', 'error');
+            }
+        }
+
+        // Mostrar modal de confirmação
+        function showConfirmModal(title, message, action) {
+            confirmModalTitle.textContent = title;
+            confirmModalMessage.textContent = message;
+            
+            if (typeof action === 'function') {
+                currentConfirmAction = action;
+                confirmModal.classList.add('active');
+            } else if (action === 'success' || action === 'error') {
+                // Para mensagens simples de sucesso/erro
+                confirmModalTitle.style.color = action === 'success' ? 'var(--success)' : 'var(--danger)';
+                confirmCancelBtn.style.display = 'none';
+                confirmOkBtn.textContent = 'OK';
+                currentConfirmAction = function() { /* apenas fecha o modal */ };
+                confirmModal.classList.add('active');
+            }
+        }
+
+        // Fechar modal de confirmação
+        function closeConfirmModal() {
+            confirmModal.classList.remove('active');
+            currentConfirmAction = null;
+        }
+
+        // Funções auxiliares
+        function formatDate(dateString) {
+            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            return new Date(dateString).toLocaleDateString('pt-BR', options);
+        }
+
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '<i class="fas fa-star star filled"></i>';
+                } else {
+                    stars += '<i class="far fa-star star"></i>';
+                }
+            }
+            return stars;
+        }
+
+        function getStatusClass(status) {
+            switch(status) {
+                case 'Ativo': return 'status-completed';
+                case 'Inativo': return 'status-pending';
+                case 'Treinamento': return 'status-pending';
+                default: return '';
+            }
+        }
+
+    </script>
+</body>
+</html>

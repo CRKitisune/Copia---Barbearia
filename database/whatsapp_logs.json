@@ -1,0 +1,502 @@
+[
+  {
+    "timestamp": "2025-10-07T23:11:35.362Z",
+    "type": "info",
+    "message": "Desconectando WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:11:35.381Z",
+    "type": "warning",
+    "message": "Logout do WhatsApp - sessão removida"
+  },
+  {
+    "timestamp": "2025-10-07T23:11:35.390Z",
+    "type": "info",
+    "message": "Desconectando WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:11:35.396Z",
+    "type": "success",
+    "message": "WhatsApp desconectado"
+  },
+  {
+    "timestamp": "2025-10-07T23:11:35.406Z",
+    "type": "success",
+    "message": "WhatsApp desconectado"
+  },
+  {
+    "timestamp": "2025-10-07T23:11:35.418Z",
+    "type": "info",
+    "message": "Sessão do WhatsApp limpa"
+  },
+  {
+    "timestamp": "2025-10-07T23:11:38.284Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:11:38.897Z",
+    "type": "info",
+    "message": "QR Code gerado - aguardando escaneamento"
+  },
+  {
+    "timestamp": "2025-10-07T23:11:49.236Z",
+    "type": "warning",
+    "message": "Reinício necessário - reconecte manualmente"
+  },
+  {
+    "timestamp": "2025-10-07T23:12:34.921Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:12:36.555Z",
+    "type": "success",
+    "message": "WhatsApp conectado com sucesso"
+  },
+  {
+    "timestamp": "2025-10-07T23:13:14.617Z",
+    "type": "success",
+    "message": "Mensagem enviada para 5511998761833"
+  },
+  {
+    "timestamp": "2025-10-07T23:13:20.439Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511777777777 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:13:20.573Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511666666666 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:13:32.806Z",
+    "type": "success",
+    "message": "Mensagem enviada para 5511998761833"
+  },
+  {
+    "timestamp": "2025-10-07T23:13:47.583Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511777777777 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:13:47.729Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511666666666 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:16:16.160Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:16:17.163Z",
+    "type": "info",
+    "message": "QR Code gerado - aguardando escaneamento"
+  },
+  {
+    "timestamp": "2025-10-07T23:16:47.191Z",
+    "type": "info",
+    "message": "QR Code gerado - aguardando escaneamento"
+  },
+  {
+    "timestamp": "2025-10-07T23:17:17.277Z",
+    "type": "info",
+    "message": "QR Code gerado - aguardando escaneamento"
+  },
+  {
+    "timestamp": "2025-10-07T23:17:24.528Z",
+    "type": "info",
+    "message": "Desconectando WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:17:24.567Z",
+    "type": "warning",
+    "message": "Logout do WhatsApp - sessão removida"
+  },
+  {
+    "timestamp": "2025-10-07T23:17:24.573Z",
+    "type": "info",
+    "message": "Desconectando WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:17:24.590Z",
+    "type": "success",
+    "message": "WhatsApp desconectado"
+  },
+  {
+    "timestamp": "2025-10-07T23:17:24.596Z",
+    "type": "success",
+    "message": "WhatsApp desconectado"
+  },
+  {
+    "timestamp": "2025-10-07T23:17:24.601Z",
+    "type": "info",
+    "message": "Sessão do WhatsApp limpa"
+  },
+  {
+    "timestamp": "2025-10-07T23:17:25.784Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:17:26.726Z",
+    "type": "info",
+    "message": "QR Code gerado - aguardando escaneamento"
+  },
+  {
+    "timestamp": "2025-10-07T23:17:42.962Z",
+    "type": "warning",
+    "message": "Reinício necessário - reconecte manualmente"
+  },
+  {
+    "timestamp": "2025-10-07T23:21:18.649Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:21:20.085Z",
+    "type": "info",
+    "message": "QR Code gerado - aguardando escaneamento"
+  },
+  {
+    "timestamp": "2025-10-07T23:21:34.490Z",
+    "type": "warning",
+    "message": "Reinício necessário - reconecte manualmente"
+  },
+  {
+    "timestamp": "2025-10-07T23:22:37.807Z",
+    "type": "info",
+    "message": "Desconectando WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:22:37.830Z",
+    "type": "error",
+    "message": "Erro ao desconectar: Connection Closed"
+  },
+  {
+    "timestamp": "2025-10-07T23:22:37.832Z",
+    "type": "info",
+    "message": "Sessão do WhatsApp limpa"
+  },
+  {
+    "timestamp": "2025-10-07T23:22:39.795Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:22:40.604Z",
+    "type": "info",
+    "message": "QR Code gerado - aguardando escaneamento"
+  },
+  {
+    "timestamp": "2025-10-07T23:22:45.049Z",
+    "type": "warning",
+    "message": "Reinício necessário - reconecte manualmente"
+  },
+  {
+    "timestamp": "2025-10-07T23:23:49.324Z",
+    "type": "info",
+    "message": "Desconectando WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:23:49.353Z",
+    "type": "error",
+    "message": "Erro ao desconectar: Connection Closed"
+  },
+  {
+    "timestamp": "2025-10-07T23:23:55.873Z",
+    "type": "info",
+    "message": "Desconectando WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:23:55.927Z",
+    "type": "error",
+    "message": "Erro ao desconectar: Connection Closed"
+  },
+  {
+    "timestamp": "2025-10-07T23:24:03.629Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:24:08.468Z",
+    "type": "warning",
+    "message": "Logout do WhatsApp - sessão removida"
+  },
+  {
+    "timestamp": "2025-10-07T23:24:08.473Z",
+    "type": "info",
+    "message": "Desconectando WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:24:08.500Z",
+    "type": "error",
+    "message": "Erro ao desconectar: Connection Closed"
+  },
+  {
+    "timestamp": "2025-10-07T23:24:08.505Z",
+    "type": "info",
+    "message": "Sessão do WhatsApp limpa"
+  },
+  {
+    "timestamp": "2025-10-07T23:32:14.904Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:32:16.175Z",
+    "type": "info",
+    "message": "QR Code gerado - aguardando escaneamento"
+  },
+  {
+    "timestamp": "2025-10-07T23:32:48.266Z",
+    "type": "info",
+    "message": "Desconectando WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:32:48.291Z",
+    "type": "warning",
+    "message": "Logout do WhatsApp - sessão removida"
+  },
+  {
+    "timestamp": "2025-10-07T23:32:48.299Z",
+    "type": "info",
+    "message": "Desconectando WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:32:48.304Z",
+    "type": "success",
+    "message": "WhatsApp desconectado"
+  },
+  {
+    "timestamp": "2025-10-07T23:32:48.314Z",
+    "type": "success",
+    "message": "WhatsApp desconectado"
+  },
+  {
+    "timestamp": "2025-10-07T23:32:48.320Z",
+    "type": "info",
+    "message": "Sessão do WhatsApp limpa"
+  },
+  {
+    "timestamp": "2025-10-07T23:32:48.982Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:32:49.604Z",
+    "type": "info",
+    "message": "QR Code gerado - aguardando escaneamento"
+  },
+  {
+    "timestamp": "2025-10-07T23:33:08.594Z",
+    "type": "warning",
+    "message": "Reinício necessário - sessão mantida para reconexão"
+  },
+  {
+    "timestamp": "2025-10-07T23:33:27.066Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:33:28.555Z",
+    "type": "success",
+    "message": "WhatsApp conectado com sucesso"
+  },
+  {
+    "timestamp": "2025-10-07T23:33:40.118Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511777777777 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:33:40.368Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511666666666 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:33:52.502Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511777777777 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:33:52.799Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511666666666 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:36:08.288Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511777777777 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:36:08.539Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511666666666 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:36:21.021Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511777777777 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:36:21.272Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511666666666 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:36:29.539Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511777777777 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:36:29.795Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 5511666666666 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:47:35.868Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:47:37.725Z",
+    "type": "success",
+    "message": "WhatsApp conectado com sucesso"
+  },
+  {
+    "timestamp": "2025-10-07T23:47:48.767Z",
+    "type": "success",
+    "message": "Mensagem enviada para 5511777777777"
+  },
+  {
+    "timestamp": "2025-10-07T23:47:51.297Z",
+    "type": "success",
+    "message": "Mensagem enviada para 5511666666666"
+  },
+  {
+    "timestamp": "2025-10-07T23:48:43.297Z",
+    "type": "info",
+    "message": "Nova mensagem recebida"
+  },
+  {
+    "timestamp": "2025-10-07T23:48:43.907Z",
+    "type": "info",
+    "message": "Nova mensagem recebida"
+  },
+  {
+    "timestamp": "2025-10-07T23:48:46.725Z",
+    "type": "info",
+    "message": "Nova mensagem recebida"
+  },
+  {
+    "timestamp": "2025-10-07T23:48:50.914Z",
+    "type": "info",
+    "message": "Nova mensagem recebida"
+  },
+  {
+    "timestamp": "2025-10-07T23:49:15.516Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-07T23:49:17.192Z",
+    "type": "success",
+    "message": "WhatsApp conectado com sucesso"
+  },
+  {
+    "timestamp": "2025-10-07T23:50:35.746Z",
+    "type": "success",
+    "message": "Mensagem enviada para 5511777777777"
+  },
+  {
+    "timestamp": "2025-10-07T23:50:36.105Z",
+    "type": "success",
+    "message": "Mensagem enviada para 5511666666666"
+  },
+  {
+    "timestamp": "2025-10-07T23:50:41.429Z",
+    "type": "success",
+    "message": "Mensagem enviada para 5511998761833"
+  },
+  {
+    "timestamp": "2025-10-07T23:56:01.433Z",
+    "type": "success",
+    "message": "Mensagem enviada para 5511777777777"
+  },
+  {
+    "timestamp": "2025-10-07T23:56:01.643Z",
+    "type": "success",
+    "message": "Mensagem enviada para 5511666666666"
+  },
+  {
+    "timestamp": "2025-10-07T23:56:01.978Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 11999991111 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-08T00:11:17.566Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-08T00:11:19.392Z",
+    "type": "success",
+    "message": "WhatsApp conectado com sucesso"
+  },
+  {
+    "timestamp": "2025-10-08T00:11:24.720Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 11999991111 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-08T00:11:35.280Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 11999991111 não está registrado no WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-08T00:23:20.181Z",
+    "type": "info",
+    "message": "Nova mensagem recebida"
+  },
+  {
+    "timestamp": "2025-10-08T00:26:01.876Z",
+    "type": "info",
+    "message": "Nova mensagem recebida"
+  },
+  {
+    "timestamp": "2025-10-08T00:37:57.658Z",
+    "type": "info",
+    "message": "Nova mensagem recebida"
+  },
+  {
+    "timestamp": "2025-10-08T00:38:18.192Z",
+    "type": "info",
+    "message": "Nova mensagem recebida"
+  },
+  {
+    "timestamp": "2025-10-08T01:11:30.539Z",
+    "type": "info",
+    "message": "Nova mensagem recebida"
+  },
+  {
+    "timestamp": "2025-10-08T01:16:04.910Z",
+    "type": "warning",
+    "message": "Conexão perdida - sessão mantida para reconexão"
+  },
+  {
+    "timestamp": "2025-10-08T01:28:54.510Z",
+    "type": "info",
+    "message": "Iniciando conexão com WhatsApp"
+  },
+  {
+    "timestamp": "2025-10-08T01:28:55.703Z",
+    "type": "success",
+    "message": "WhatsApp conectado com sucesso"
+  },
+  {
+    "timestamp": "2025-10-08T01:28:58.413Z",
+    "type": "error",
+    "message": "Erro ao enviar mensagem: Número 11999991111 não está registrado no WhatsApp"
+  }
+]

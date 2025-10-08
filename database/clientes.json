@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "nome": "Roberto Silva",
+    "telefone": "(11) 99999-1111",
+    "email": "roberto@email.com",
+    "data_nascimento": "1985-03-15",
+    "data_cadastro": "2023-01-10",
+    "status": "Ativo",
+    "observacoes": "Cliente fiel, sempre pede o mesmo corte",
+    "preferencias": {
+      "barbeiro_preferido": "João Silva",
+      "servico_preferido": "Pacote Completo",
+      "horario_preferido": "Manhã"
+    },
+    "historico_agendamentos": 12,
+    "ultima_visita": "2024-01-15"
+  },
+  {
+    "id": 2,
+    "nome": "Marcos Oliveira",
+    "telefone": "(11) 98888-2222",
+    "email": "marcos@email.com",
+    "data_nascimento": "1990-07-22",
+    "data_cadastro": "2023-02-20",
+    "status": "Ativo",
+    "observacoes": "Gosta de experimentar novos cortes",
+    "preferencias": {
+      "barbeiro_preferido": "Carlos Oliveira",
+      "servico_preferido": "Corte Masculino",
+      "horario_preferido": "Tarde"
+    },
+    "historico_agendamentos": 8,
+    "ultima_visita": "2024-01-10"
+  },
+  {
+    "id": 3,
+    "nome": "Pedro Santos",
+    "telefone": "(11) 97777-3333",
+    "email": "pedro@email.com",
+    "data_nascimento": "1995-11-08",
+    "data_cadastro": "2023-03-15",
+    "status": "Ativo",
+    "observacoes": "Cliente novo, ainda descobrindo preferências",
+    "preferencias": {
+      "barbeiro_preferido": null,
+      "servico_preferido": "Corte + Barba",
+      "horario_preferido": "Manhã"
+    },
+    "historico_agendamentos": 3,
+    "ultima_visita": "2024-01-05"
+  },
+  {
+    "id": 4,
+    "nome": "Lucas Ferreira",
+    "telefone": "(11) 96666-4444",
+    "email": "lucas@email.com",
+    "data_nascimento": "1988-05-30",
+    "data_cadastro": "2023-04-10",
+    "status": "Inativo",
+    "observacoes": "Mudou de cidade",
+    "preferencias": {
+      "barbeiro_preferido": "João Silva",
+      "servico_preferido": "Pacote Completo",
+      "horario_preferido": "Tarde"
+    },
+    "historico_agendamentos": 15,
+    "ultima_visita": "2023-12-20"
+  },
+  {
+    "id": 5,
+    "nome": "Antonio Costa",
+    "telefone": "(11) 95555-5555",
+    "email": "antonio@email.com",
+    "data_nascimento": "1992-09-12",
+    "data_cadastro": "2023-05-25",
+    "status": "Ativo",
+    "observacoes": "Cliente VIP, sempre agenda com antecedência",
+    "preferencias": {
+      "barbeiro_preferido": "João Silva",
+      "servico_preferido": "Barboterapia",
+      "horario_preferido": "Manhã"
+    },
+    "historico_agendamentos": 20,
+    "ultima_visita": "2024-01-20"
+  },
+  {
+    "id": 9,
+    "nome": "Carlos Teste",
+    "telefone": "5511777777777",
+    "email": "carlos@teste.com",
+    "data_nascimento": "1990-05-20",
+    "data_cadastro": "2025-10-07",
+    "status": "Ativo",
+    "observacoes": "Cliente de teste",
+    "preferencias": {
+      "barbeiro_preferido": "João Silva",
+      "servico_preferido": "Corte Masculino",
+      "horario_preferido": "Manhã"
+    },
+    "historico_agendamentos": 1,
+    "ultima_visita": "2025-10-07"
+  },
+  {
+    "id": 10,
+    "nome": "Ana Teste",
+    "telefone": "5511666666666",
+    "email": "ana@teste.com",
+    "data_nascimento": "1988-08-15",
+    "data_cadastro": "2025-10-07",
+    "status": "Ativo",
+    "observacoes": "Cliente de teste",
+    "preferencias": {
+      "barbeiro_preferido": "Carlos Oliveira",
+      "servico_preferido": "Pacote Completo",
+      "horario_preferido": "Tarde"
+    },
+    "historico_agendamentos": 1,
+    "ultima_visita": "2025-10-07"
+  }
+]
+

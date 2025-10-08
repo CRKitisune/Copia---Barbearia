@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "nome": "João Silva",
+    "cargo": "Barbeiro Sênior",
+    "telefone": "(11) 99999-9999",
+    "email": "joao@barbearianativa.com",
+    "status": "Ativo",
+    "servicos_semana": 15,
+    "avaliacao": 4.9,
+    "data_cadastro": "2023-01-15",
+    "especialidades": ["Corte", "Barba", "Pacote Completo"],
+    "horario_trabalho": {
+      "segunda": "08:00-18:00",
+      "terca": "08:00-18:00",
+      "quarta": "08:00-18:00",
+      "quinta": "08:00-18:00",
+      "sexta": "08:00-18:00",
+      "sabado": "08:00-14:00",
+      "domingo": "Fechado"
+    },
+    "observacoes": "Especialista em cortes modernos e tradicionais"
+  },
+  {
+    "id": 2,
+    "nome": "Carlos Oliveira",
+    "cargo": "Barbeiro",
+    "telefone": "(11) 98888-8888",
+    "email": "carlos@barbearianativa.com",
+    "status": "Ativo",
+    "servicos_semana": 12,
+    "avaliacao": 4.6,
+    "data_cadastro": "2023-03-20",
+    "especialidades": ["Corte", "Barba"],
+    "horario_trabalho": {
+      "segunda": "09:00-17:00",
+      "terca": "09:00-17:00",
+      "quarta": "09:00-17:00",
+      "quinta": "09:00-17:00",
+      "sexta": "09:00-17:00",
+      "sabado": "09:00-13:00",
+      "domingo": "Fechado"
+    },
+    "observacoes": "Experiência em barboterapia"
+  },
+  {
+    "id": 3,
+    "nome": "André Santos",
+    "cargo": "Aprendiz",
+    "telefone": "(11) 97777-7777",
+    "email": "andre@barbearianativa.com",
+    "status": "Treinamento",
+    "servicos_semana": 6,
+    "avaliacao": 4.2,
+    "data_cadastro": "2023-06-10",
+    "especialidades": ["Corte Básico"],
+    "horario_trabalho": {
+      "segunda": "10:00-16:00",
+      "terca": "10:00-16:00",
+      "quarta": "10:00-16:00",
+      "quinta": "10:00-16:00",
+      "sexta": "10:00-16:00",
+      "sabado": "Fechado",
+      "domingo": "Fechado"
+    },
+    "observacoes": "Em treinamento, supervisionado pelo João"
+  }
+]

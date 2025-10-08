@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "nome": "Corte Masculino",
+    "descricao": "Corte de cabelo masculino com lavagem e finalização",
+    "preco": 35.00,
+    "duracao": 45,
+    "categoria": "Corte",
+    "ativo": true,
+    "especialidades_necessarias": ["Corte"],
+    "observacoes": "Inclui lavagem e finalização"
+  },
+  {
+    "id": 2,
+    "nome": "Barba Completa",
+    "descricao": "Aparar, modelar e finalizar a barba",
+    "preco": 25.00,
+    "duracao": 30,
+    "categoria": "Barba",
+    "ativo": true,
+    "especialidades_necessarias": ["Barba"],
+    "observacoes": "Inclui hidratação"
+  },
+  {
+    "id": 3,
+    "nome": "Pacote Completo",
+    "descricao": "Corte + Barba + Sobrancelha",
+    "preco": 55.00,
+    "duracao": 75,
+    "categoria": "Pacote",
+    "ativo": true,
+    "especialidades_necessarias": ["Corte", "Barba"],
+    "observacoes": "Melhor custo-benefício"
+  },
+  {
+    "id": 4,
+    "nome": "Sobrancelha",
+    "descricao": "Design e limpeza da sobrancelha",
+    "preco": 15.00,
+    "duracao": 20,
+    "categoria": "Estética",
+    "ativo": true,
+    "especialidades_necessarias": ["Estética"],
+    "observacoes": "Design personalizado"
+  },
+  {
+    "id": 5,
+    "nome": "Barboterapia",
+    "descricao": "Tratamento relaxante para barba com toalha quente",
+    "preco": 40.00,
+    "duracao": 50,
+    "categoria": "Tratamento",
+    "ativo": true,
+    "especialidades_necessarias": ["Barboterapia"],
+    "observacoes": "Tratamento relaxante"
+  },
+  {
+    "id": 6,
+    "nome": "Corte + Barba",
+    "descricao": "Corte de cabelo + Barba completa",
+    "preco": 50.00,
+    "duracao": 60,
+    "categoria": "Combo",
+    "ativo": true,
+    "especialidades_necessarias": ["Corte", "Barba"],
+    "observacoes": "Combo popular"
+  }
+]

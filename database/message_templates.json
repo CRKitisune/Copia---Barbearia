@@ -1,0 +1,22 @@
+{
+  "confirmacao_agendamento": {
+    "nome": "Confirmação de Agendamento",
+    "template": "🎉 *Olá {cliente_nome}!*\n\nSeu agendamento foi confirmado:\n\n📅 *Data:* {data_agendamento}\n🕐 *Horário:* {horario_agendamento}\n✂️ *Serviço:* {servico_nome}\n👨‍💼 *Barbeiro:* {colaborador_nome}\n💰 *Valor:* R$ {servico_preco}\n\n📍 *Local:* Barbearia Nativa\n\nObrigado por escolher nossos serviços! 🙏",
+    "ativo": true
+  },
+  "lembrete_24h": {
+    "nome": "Lembrete 24h",
+    "template": "⏰ *Lembrete de Agendamento*\n\nOlá {cliente_nome}!\n\nSeu agendamento é amanhã:\n\n📅 *Data:* {data_agendamento}\n🕐 *Horário:* {horario_agendamento}\n✂️ *Serviço:* {servico_nome}\n👨‍💼 *Barbeiro:* {colaborador_nome}\n\nTe esperamos! 😊",
+    "ativo": true
+  },
+  "lembrete_2h": {
+    "nome": "Lembrete 2h",
+    "template": "🔔 *Lembrete de Agendamento*\n\nOlá {cliente_nome}!\n\nSeu agendamento é em 2 horas:\n\n🕐 *Horário:* {horario_agendamento}\n✂️ *Serviço:* {servico_nome}\n👨‍💼 *Barbeiro:* {colaborador_nome}\n\nNos vemos em breve! 👋",
+    "ativo": true
+  },
+  "agendamento_cancelado": {
+    "nome": "Agendamento Cancelado",
+    "template": "❌ *Agendamento Cancelado*\n\nOlá {cliente_nome}!\n\nSeu agendamento foi cancelado:\n\n📅 *Data:* {data_agendamento}\n🕐 *Horário:* {horario_agendamento}\n\nPara reagendar, entre em contato conosco.\n\nObrigado! 🙏",
+    "ativo": true
+  }
+}

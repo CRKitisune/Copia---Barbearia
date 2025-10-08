@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "cliente_id": 1,
+    "cliente_nome": "Roberto Silva",
+    "colaborador_id": 1,
+    "colaborador_nome": "João Silva",
+    "agendamento_id": 5,
+    "nota": 4,
+    "comentario": "Muito bom, mas demorou um pouco",
+    "data_avaliacao": "2024-01-22T11:30:00Z",
+    "criterios": {
+      "qualidade_servico": 4,
+      "atendimento": 5,
+      "ambiente": 4,
+      "pontualidade": 3
+    },
+    "status": "Publicada"
+  },
+  {
+    "id": 2,
+    "cliente_id": 3,
+    "cliente_nome": "Pedro Santos",
+    "colaborador_id": 2,
+    "colaborador_nome": "Carlos Oliveira",
+    "agendamento_id": 4,
+    "nota": 5,
+    "comentario": "Excelente atendimento!",
+    "data_avaliacao": "2024-01-24T17:00:00Z",
+    "criterios": {
+      "qualidade_servico": 5,
+      "atendimento": 5,
+      "ambiente": 5,
+      "pontualidade": 5
+    },
+    "status": "Publicada"
+  },
+  {
+    "id": 3,
+    "cliente_id": 5,
+    "cliente_nome": "Antonio Costa",
+    "colaborador_id": 1,
+    "colaborador_nome": "João Silva",
+    "agendamento_id": null,
+    "nota": 5,
+    "comentario": "Sempre excelente! Recomendo a todos.",
+    "data_avaliacao": "2024-01-20T12:00:00Z",
+    "criterios": {
+      "qualidade_servico": 5,
+      "atendimento": 5,
+      "ambiente": 5,
+      "pontualidade": 5
+    },
+    "status": "Publicada"
+  },
+  {
+    "id": 4,
+    "cliente_id": 2,
+    "cliente_nome": "Marcos Oliveira",
+    "colaborador_id": 2,
+    "colaborador_nome": "Carlos Oliveira",
+    "agendamento_id": null,
+    "nota": 4,
+    "comentario": "Bom atendimento, ambiente agradável.",
+    "data_avaliacao": "2024-01-18T16:30:00Z",
+    "criterios": {
+      "qualidade_servico": 4,
+      "atendimento": 4,
+      "ambiente": 5,
+      "pontualidade": 4
+    },
+    "status": "Publicada"
+  },
+  {
+    "id": 5,
+    "cliente_id": 1,
+    "cliente_nome": "Roberto Silva",
+    "colaborador_id": 1,
+    "colaborador_nome": "João Silva",
+    "agendamento_id": null,
+    "nota": 5,
+    "comentario": "Profissional excepcional!",
+    "data_avaliacao": "2024-01-15T14:20:00Z",
+    "criterios": {
+      "qualidade_servico": 5,
+      "atendimento": 5,
+      "ambiente": 5,
+      "pontualidade": 5
+    },
+    "status": "Publicada"
+  }
+]
